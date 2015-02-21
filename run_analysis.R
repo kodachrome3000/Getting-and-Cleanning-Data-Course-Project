@@ -47,14 +47,14 @@ write.table(clean, "merged_clean_data.txt")
 ##    for each activity and each subject.
 
 uniqueSubjects = unique(Subject)[,1]
-numSubjects = length(unique(Subject)[,1])
-numActivities = length(activities[,1])
+lenSubjects = length(unique(Subject)[,1])
+lenActivities = length(activities[,1])
 numCols = dim(clean)[2]
-result = clean[1:(numSubjects*numActivities), ]
+result = clean[1:(lenSubjects*lenActivities), ]
 
 row = 1
-for (s in 1:numSubjects) {
-  for (a in 1:numActivities) {
+for (s in 1:lenSubjects) {
+  for (a in 1:lenActivities) {
     result[row, 1] = uniqueSubjects[s]
     result[row, 2] = activities[a, 2]
     tmp <- clean[clean$subject==s & clean$activity==activities[a, 2], ]
