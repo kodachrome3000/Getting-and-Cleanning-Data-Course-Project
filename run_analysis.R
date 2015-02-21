@@ -1,3 +1,5 @@
+library(plyr)
+
 ## You should create one R script called run_analysis.R that does the following. 
 
 ## 1. Merges the training and the test sets to create one data set.
@@ -55,8 +57,8 @@ for (s in 1:lenSubjects) {
   for (a in 1:lenActivities) {
     result[row, 1] = uniqueSubjects[s]
     result[row, 2] = activities[a, 2]
-    tmp <- clean[clean$subject==s & clean$activity==activities[a, 2], ]
-    result[row, 3:numCols] <- colMeans(tmp[, 3:numCols])
+    temp <- clean[clean$subject==s & clean$activity==activities[a, 2], ]
+    result[row, 3:numCols] <- colMeans(temp[, 3:numCols])
     row = row+1
   }
 }
